@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>font-exam</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Press+Start+2P|Roboto|Roboto+Condensed|Slabo+27px|Source+Sans+Pro|Spirax" rel="stylesheet">
+	<style type="text/css">
+		
+	.content{
+		width: 66.6666666%;
+		padding: 50px;
+		font-size: 20px;
+
+	}	
+.right{
+          border:3px 
+          solid #0f0;
+          background-color: #afa;
+          }
+          .wrong{
+            border:3px solid #f00;
+            background-color: #faa;
+          }
+		
+	</style>
+	</head>
+<body>
+
+
+<div class="container content">
+	<div class="row">
+	<select id="text">
+	<option value="Roboto">Roboto</option>
+	<option value="Roboto Condensed">Roboto Condensed</option>
+	<option value="Slabo 27px">Slabo 27px</option>
+	<option value="Source Sans Pro">Source Sans Pro</option>
+	<option value="Spirax">Spirax</option>
+</select>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+	</div>
+</div>
+<!-- mcq -->
+<div id="exam">
+    <h1>exam</h1>
+    <fieldset id="q1">
+        <legend>Question 1</legend>
+        <legend>choose the correct answer</legend> 
+        <label><input type="radio" name="q1" value="p"/>Wrong answer1</label><br/>
+        <label><input type="radio" name="q1" value="x"/>Correct answer</label><br/>
+        <label><input type="radio" name="q1" value="y"/>Wrong answer2</label><br/>
+        <label><input type="radio" name="q1" value="m"/>Wrong answer3</label><br/>
+        <label><input type="radio" name="q1" value="f"/>Wrong answer4</label>
+    </fieldset>
+
+    <fieldset id="q2">
+        <legend>Question 2</legend>
+        <legend>choose the correct answer</legend>
+        <label><input type="radio" name="q2" value="r"/>Wrong answer1</label><br/>
+        <label><input type="radio" name="q2" value="s"/>Wrong answer2</label><br/>
+        <label><input type="radio" name="q2" value="l"/>Wrong answer3</label><br/>
+        <label><input type="radio" name="q2" value="x"/>Correct answer</label><br/>
+        <label><input type="radio" name="q2" value="r"/>Wrong answer4</label>
+    </fieldset>
+    <fieldset id="q3">
+        <legend>Question 3</legend> 
+        <legend>choose the correct answer</legend>
+        <label><input type="radio" name="q3" value="d"/>Wrong answer1</label><br/> 
+        <label><input type="radio" name="q3" value="g"/>Wrong answer2</label><br/>
+        <label><input type="radio" name="q3" value="j"/>Wrong answer3</label><br/>
+        <label><input type="radio" name="q3" value="e"/>Wrong answer4</label><br/> 
+        <label><input type="radio" name="q3" value="x"/>Correct answer</label>
+    </fieldset>
+</div>
+<input type="button" id="btn" value="Check Answers"/>
+<input type="button" id="btnclr" value="Clear"/>
+<h2 id="score"></h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var  T= $('#text').val();
+$('p').css('font-family',T);
+
+
+
+$('#text').change(function(){
+var T = $('#text').val();
+$('p').css('font-family',T);
+})
+	})
+
+	        <script>window.onerror = function (m, u, l) {
+                alert('Javascript Error: ' + m + 'nURL: ' + u + 'nLine Number: ' + l);
+                return true;
+            }</script>
+        <script>'use strict';
+            window.onload = init;
+            function init() {
+                document.getElementById('btn').onclick = validate;
+                document.getElementById('btnclr').onclick = clear;
+            }
+            function validate() {
+                var radios = document.getElementById("exam").getElementsByTagName("INPUT");
+                var right = 0;
+                var wrong = 0;
+                for (var i = 0, len = radios.length; i < len; i++) {
+                    if (radios[i].value == "x") {
+                        if (radios[i].checked == true) {
+                            right++;
+                            radios[i].parentNode.parentNode.className = 'right';
+                        } else {
+                            wrong++;
+                            radios[i].parentNode.parentNode.className = 'wrong';
+                        }
+                    }
+                }
+                var pcnt = (100 * right / (wrong + right)).toFixed(1);
+                document.getElementById("score").innerHTML = 'Correct: ' + right + '<br/>Incorrect: ' + wrong + '<br/>Percent Correct: ' + pcnt + '%';
+            }
+            function clear() {
+                var radios = document.getElementById("exam").getElementsByTagName("INPUT");
+                for (var i = 0, len = radios.length; i < len; i++) {
+                    radios[i].checked = false;
+                    if (radios[i].value == "x") {
+                        radios[i].parentNode.parentNode.className = '';
+                    }
+                }
+                document.getElementById("score").innerHTML = '';
+            }
+        </script>
+</script>
+</body>
+</html>
